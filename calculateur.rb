@@ -17,16 +17,24 @@ Biere['Glucides'] = 25
 Biere['Protéines'] = 4
 
 # Je construis mon Menu
-Menu[Welsh] = Welsh 
-Menu[Frites] = Frites
-Menu[Biere] = Biere 
-p Menu
+Menu["Welsh"] = Welsh 
+Menu["Frites"] = Frites
+Menu["Biere"] = Biere 
+
 # Voici le hash utile pour les calculs
 CALORIES['Lipides'] = 9
 CALORIES['Glucides'] = 4
 CALORIES['Protéines'] = 4
-
-
+#===================DISPLAY =======================================
+/puts
+p "Welsh = "
+p Welsh
+puts
+p "Menu = "
+puts	
+p Menu
+puts
+/
 
 def weight_watcher(my_h)
 	result_sum = 0 
@@ -35,8 +43,22 @@ def weight_watcher(my_h)
 	return result_sum
 end
 
-p  weight_watcher(Welsh)
+#p  weight_watcher(Welsh)
 
-def menu_weight_watcher(menu)
+def menu_weight_watcher(_menu)
+n_total_calorie = 0
+_menu.each_key {|key| 
+	_menu[key].each_key { |key2|
+	#	p "#{_menu[key][key2]} * #{CALORIES[key2]}" 
+	#	puts
+		n_total_calorie += _menu[key][key2]*CALORIES[key2]
+	} #2nd each
+
+} #1st each	
+	
+	puts
+	p "Calories totales : #{n_total_calorie} " 
 	
 end
+
+menu_weight_watcher(Menu)
